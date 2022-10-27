@@ -5,7 +5,7 @@ import ViewUsersPage from "./pages/view-users/ViewUsersPage";
 function App() {
   return (
     <div>
-      <ViewUsersPage />
+      <LoginPage />
     </div>
   );
 }
