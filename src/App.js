@@ -1,14 +1,11 @@
-/* import Sidebar from "./Sidebar";
-import Login from "./components/Login"; */
 import LoginPage from "./pages/login/LoginPage";
 import React from "react";
-import Login from "./containers/login/Login";
+import ViewUsersPage from "./pages/view-users/ViewUsersPage";
 
 function App() {
   return (
     <div>
-      <LoginPage />
-      <Login />
+      <ViewUsersPage />
     </div>
   );
 }
