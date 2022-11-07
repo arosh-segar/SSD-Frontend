@@ -1,17 +1,37 @@
+import ToastMessage from "./Toast";
+
 const TableView = () => {
   return (
     <>
+      <ToastMessage
+        msg="Message added successfully"
+        svg={
+          <svg
+            aria-hidden="true"
+            class="w-5 h-5"
+            fill="currentColor"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+              clip-rule="evenodd"
+            ></path>
+          </svg>
+        }
+      />
       <div class=" w-11/12 relative shadow-md sm:rounded-lg">
         <div className="flex w-full justify-end mb-5">
           <button
             type="button"
-            class="text-blue-700 hover:text-white border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:border-blue-500 dark:text-blue-500 dark:hover:text-white dark:hover:bg-blue-600 dark:focus:ring-blue-800"
+            class="border focus:ring-4 focus:outline-none font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 border-blue-500 text-blue-500 hover:text-white hover:bg-blue-600 focus:ring-blue-800"
           >
             Add new user
           </button>
         </div>
-        <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400 rounded-lg overflow-hidden">
-          <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+        <table class="w-full text-sm text-left text-gray-400 rounded-lg overflow-hidden">
+          <thead class="text-xs uppercase bg-gray-700 text-gray-400">
             <tr>
               <th scope="col" class="py-3 px-6">
                 Full name
@@ -31,10 +51,10 @@ const TableView = () => {
             </tr>
           </thead>
           <tbody>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <tr class="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
               <th
                 scope="row"
-                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                class="py-4 px-6 font-medium whitespace-nowrap text-white"
               >
                 Apple MacBook Pro 17"
               </th>
@@ -42,18 +62,15 @@ const TableView = () => {
               <td class="py-4 px-6">Laptop</td>
               <td class="py-4 px-6">$2999</td>
               <td class="py-4 px-6">
-                <a
-                  href="#"
-                  class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                >
+                <a href="#" class="font-medium text-blue-500 hover:underline">
                   Edit
                 </a>
               </td>
             </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <tr class="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
               <th
                 scope="row"
-                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                class="py-4 px-6 font-medium whitespace-nowrap text-white"
               >
                 Microsoft Surface Pro
               </th>
@@ -61,18 +78,15 @@ const TableView = () => {
               <td class="py-4 px-6">Laptop PC</td>
               <td class="py-4 px-6">$1999</td>
               <td class="py-4 px-6">
-                <a
-                  href="#"
-                  class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                >
+                <a href="#" class="font-medium text-blue-500 hover:underline">
                   Edit
                 </a>
               </td>
             </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <tr class="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
               <th
                 scope="row"
-                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                class="py-4 px-6 font-medium whitespace-nowrap text-white"
               >
                 Magic Mouse 2
               </th>
@@ -80,18 +94,15 @@ const TableView = () => {
               <td class="py-4 px-6">Accessories</td>
               <td class="py-4 px-6">$99</td>
               <td class="py-4 px-6">
-                <a
-                  href="#"
-                  class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                >
+                <a href="#" class="font-medium text-blue-500 hover:underline">
                   Edit
                 </a>
               </td>
             </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <tr class="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
               <th
                 scope="row"
-                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                class="py-4 px-6 font-medium whitespace-nowrap text-white"
               >
                 Apple Watch
               </th>
@@ -99,18 +110,15 @@ const TableView = () => {
               <td class="py-4 px-6">Accessories</td>
               <td class="py-4 px-6">$179</td>
               <td class="py-4 px-6">
-                <a
-                  href="#"
-                  class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                >
+                <a href="#" class="font-medium text-blue-500 hover:underline">
                   Edit
                 </a>
               </td>
             </tr>
-            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <tr class="border-b bg-gray-800 border-gray-700 hover:bg-gray-600">
               <th
                 scope="row"
-                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                class="py-4 px-6 font-medium whitespace-nowrap text-white"
               >
                 iPad
               </th>
@@ -118,18 +126,15 @@ const TableView = () => {
               <td class="py-4 px-6">Tablet</td>
               <td class="py-4 px-6">$699</td>
               <td class="py-4 px-6">
-                <a
-                  href="#"
-                  class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                >
+                <a href="#" class="font-medium text-blue-500 hover:underline">
                   Edit
                 </a>
               </td>
             </tr>
-            <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <tr class="bg-gray-800 hover:bg-gray-600">
               <th
                 scope="row"
-                class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                class="py-4 px-6 font-medium whitespace-nowrap text-white"
               >
                 Apple iMac 27"
               </th>
@@ -137,10 +142,7 @@ const TableView = () => {
               <td class="py-4 px-6">PC Desktop</td>
               <td class="py-4 px-6">$3999</td>
               <td class="py-4 px-6">
-                <a
-                  href="#"
-                  class="font-medium text-blue-600 dark:text-blue-500 hover:underline"
-                >
+                <a href="#" class="font-medium text-blue-500 hover:underline">
                   Edit
                 </a>
               </td>
