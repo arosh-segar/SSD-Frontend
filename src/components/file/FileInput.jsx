@@ -14,9 +14,10 @@ const FileInput = () => {
     //keycloak.tokenParsed.email : user email
     //keycloak.tokenParsed.preferred_username : username
 
-    /* axios.post(`https://jsonplaceholder.typicode.com/users`).then((res) => {
-      const persons = res.data;
-    }); */
+    axios.post(`https://localhost:8000/api/users`)
+        .then((res) => {
+         const persons = res.data;
+    });
   };
   return (
     <>
