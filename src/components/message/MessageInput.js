@@ -1,23 +1,27 @@
 import ToastMessage from "../container/Toast";
 import {useState} from "react";
-import axios from "axios";
 import {useKeycloak} from "@react-keycloak/web";
 import {apiInstance} from "../../apis/apiInstance";
+import {encryptText} from '../../utils/message'
+
 
 const MessageInput = () => {
     const [isSuccessToastVisible, setIsSuccessToastVisible] = useState(false);
     const [message, setMessage] = useState("");
     const {keycloak} = useKeycloak();
 
+
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
         apiInstance.post('/message', {
-            message: message
+            message: message,
+            hash:encryptText(message)
         }).then(res => {
-            console.log(res)
+            alert(res.data.msg)
         }).catch(e => {
-            console.log(e)
+            alert(e.message)
         })
     };
 

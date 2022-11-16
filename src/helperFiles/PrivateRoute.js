@@ -2,36 +2,40 @@ import {useKeycloak} from "@react-keycloak/web";
 import {apiInstance} from "../apis/apiInstance";
 import keycloak from "./Keycloak";
 import {useEffect, useState} from "react";
+import {useCookies} from 'react-cookie';
 
 const PrivateRoute = ({children}) => {
     const {keycloak} = useKeycloak();
     let component = children;
 
-    const [session, setSession] = useState('');
+    const [session, setSession] = useState(false);
 
     const isLoggedIn = keycloak.authenticated;
+
+    //only for dev
+    // const [cookies, setCookie, removeCookie] = useCookies(['ssd_auth']);
 
     useEffect(() => {
         keycloak.idTokenParsed && (
             apiInstance.post('/user/login', {
-                name: keycloak.idTokenParsed.name,
-                email: keycloak.idTokenParsed.email
+                email: keycloak.idTokenParsed.email,
+                role:keycloak.tokenParsed.resource_access["lynx-web-app"].roles[0]
             }).then(res => {
                 console.log(res.data)
-                setSession(res.data.token)
-                console.log(children.props)
+                setSession(true)
             }).catch(e => {
+                alert('User not authenticated')
+                keycloak.logout()
                 console.log(e)
-            }))
-    }, [keycloak])
+            })
+        )
+    }, [isLoggedIn])
 
 
     if (
-        (isLoggedIn && session) &&
-        children.type.name === "ViewFilesPage" &&
-        !keycloak.tokenParsed.resource_access["lynx-web-app"].roles.includes(
-            "Manager"
-        )
+        (isLoggedIn && session)
+        && children.type.name === "ViewFilesPage"
+        && !keycloak.tokenParsed.resource_access["lynx-web-app"].roles.includes("Manager")
     ) {
         component = null;
     }
