@@ -1,13 +1,10 @@
 import ToastMessage from "../container/Toast";
 import {useState} from "react";
-import {useKeycloak} from "@react-keycloak/web";
-import axios from "axios";
 import {apiInstance} from "../../apis/apiInstance";
 
 const FileInput = () => {
     const [isSuccessToastVisible, setIsSuccessToastVisible] = useState(false);
     const [selectedFile, setSelectedFile] = useState("");
-    const {keycloak} = useKeycloak();
 
     const handleSubmit = (event) => {
         event.preventDefault();
