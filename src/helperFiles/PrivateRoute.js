@@ -1,5 +1,5 @@
-import {useKeycloak} from "@react-keycloak/web";
-import {apiInstance} from "../apis/apiInstance";
+import { useKeycloak } from "@react-keycloak/web";
+import { apiInstance } from "../apis/apiInstance";
 import keycloak from "./Keycloak";
 import {useEffect, useState} from "react";
 import {useCookies} from 'react-cookie';

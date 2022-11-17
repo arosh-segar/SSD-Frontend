@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useKeycloak } from "@react-keycloak/web";
 import { Tooltip } from "flowbite-react";
-import {apiInstance} from "../../apis/apiInstance";
+import { apiInstance } from "../../apis/apiInstance";
 
 const Sidebar = () => {
   const { keycloak } = useKeycloak();
@@ -166,28 +166,25 @@ const Sidebar = () => {
               <span className="flex-1 ml-3 whitespace-nowrap">Sign Out</span>
             </div>
           </li>
-          <li>
-            <div
-                onClick={async () => {
-                  await apiInstance.post('/user/logout')
-                  keycloak.logout();
-                }}
-                className="cursor-pointer flex items-center p-2 text-base font-normal rounded-lg text-white hover:bg-gray-700"
-            >
+          <li className="absolute bottom-5">
+            <div className="w-full flex items-center p-2 text-base font-normal rounded-lg text-white">
               <svg
-                  aria-hidden="true"
-                  className="flex-shrink-0 w-6 h-6 transition duration-75 text-gray-400 group-hover:text-white"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
+                aria-hidden="true"
+                className="flex-shrink-0 w-6 h-6 transition duration-75 text-gray-400"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+                xmlns="http://www.w3.org/2000/svg"
               >
                 <path
-                    fill-rule="evenodd"
-                    d="M3 3a1 1 0 00-1 1v12a1 1 0 102 0V4a1 1 0 00-1-1zm10.293 9.293a1 1 0 001.414 1.414l3-3a1 1 0 000-1.414l-3-3a1 1 0 10-1.414 1.414L14.586 9H7a1 1 0 100 2h7.586l-1.293 1.293z"
-                    clip-rule="evenodd"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
                 ></path>
               </svg>
-              <span className="flex-1 ml-3 whitespace-nowrap">{keycloak.idTokenParsed.name}</span>
+              <span className="flex-1 ml-3 whitespace-nowrap">
+                {keycloak?.idTokenParsed?.name}
+              </span>
             </div>
           </li>
         </ul>
