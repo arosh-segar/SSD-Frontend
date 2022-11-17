@@ -8,9 +8,6 @@ import {encryptText} from '../../utils/message'
 const MessageInput = () => {
     const [isSuccessToastVisible, setIsSuccessToastVisible] = useState(false);
     const [message, setMessage] = useState("");
-    const {keycloak} = useKeycloak();
-
-
 
     const handleSubmit = (event) => {
         event.preventDefault();
