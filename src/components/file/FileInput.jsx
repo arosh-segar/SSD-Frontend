@@ -1,45 +1,46 @@
-import React from "react";
 import ToastMessage from "../container/Toast";
-import { useState } from "react";
-import axios from "axios";
+import {useState} from "react";
 import {apiInstance} from "../../apis/apiInstance";
 
 const FileInput = () => {
-  const [isSuccessToastVisible, setIsSuccessToastVisible] = useState(false);
-  const [selectedFile, setSelectedFile] = useState("");
+    const [isSuccessToastVisible, setIsSuccessToastVisible] = useState(false);
+    const [selectedFile, setSelectedFile] = useState("");
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
-    axios.post(`https://localhost:8000/api/users`).then((res) => {
-      const persons = res.data;
-    });
-  };
-  return (
-    <>
-      <div data-testid="file-container" className="absolute top-10">
-        <ToastMessage
-          msg="Message added successfully"
-          isVisible={isSuccessToastVisible}
-          setIsVisible={setIsSuccessToastVisible}
-          svg={
-            <svg
-              aria-hidden="true"
-              class="w-6 h-6 bg-green-800 text-green-200 rounded-lg"
-              fill="currentColor"
-              viewBox="0 0 20 20"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                clip-rule="evenodd"
-              ></path>
-            </svg>
-          }
-        />
-      </div>
-      
+        apiInstance.post('/file', {
+            file: selectedFile
+        }).then(res => {
+            alert(res.data.message)
+        }).catch(e => {
+            alert(e.message)
+        })
+    };
+    return (
+        <>
+            <div className="absolute top-10">
+                <ToastMessage
+                    msg="Message added successfully"
+                    isVisible={isSuccessToastVisible}
+                    setIsVisible={setIsSuccessToastVisible}
+                    svg={
+                        <svg
+                            aria-hidden="true"
+                            class="w-6 h-6 bg-green-800 text-green-200 rounded-lg"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                            xmlns="http://www.w3.org/2000/svg"
+                        >
+                            <path
+                                fill-rule="evenodd"
+                                d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                                clip-rule="evenodd"
+                            ></path>
+                        </svg>
+                    }
+                />
+            </div>
             <div class=" w-11/12 relative">
                 <form onSubmit={handleSubmit}>
                     <div class="mb-4 w-full rounded-lg border bg-gray-700 border-gray-600">
