@@ -1,9 +1,6 @@
 
 const encrypt = new JSEncrypt()// eslint-disable-line
 
-// encrypt.setPrivateKey(process.env.privateKey);
-
-
 const REACT_APP_PUBLIC_KEY ="-----BEGIN PUBLIC KEY-----MIICITANBgkqhkiG9w0BAQEFAAOCAg4AMIICCQKCAgBgI/xIltLuqOqg8zh7R0fe" +
     "Ab3jpfRV7fF81ZrjD2IMpHlayuZ2ZZufhUog25w37LmoCU6Gd3dsYZIDcEzD0Sxu" +
     "69HQ3+j+QT8yyGbU9uH9Mmi9F9zteN5Z3fq8TN5OvIOjMxTpSzn4yV/PH5/uket4" +
@@ -23,9 +20,3 @@ export const encryptText = (text) => {
     console.log(REACT_APP_PUBLIC_KEY.toString())
     return encrypt.encrypt(text);
 }
-
-// import crypto from "crypto-js";
-//
-// export const encryptText = (text) => {
-//     return crypto.SHA256(text).toString()
-// }
