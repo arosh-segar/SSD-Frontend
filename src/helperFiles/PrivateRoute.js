@@ -17,9 +17,9 @@ const PrivateRoute = ({children}) => {
 
     useEffect(() => {
         keycloak.idTokenParsed && (
-            apiInstance.post('/user/login', {
+            apiInstance.post('/auth/login', {
                 email: keycloak.idTokenParsed.email,
-                role:keycloak.tokenParsed.resource_access["lynx-web-app"].roles[0]
+                role:keycloak.tokenParsed.resource_access["lynx-web-app"].roles
             }).then(res => {
                 console.log(res.data)
                 setSession(true)
@@ -33,14 +33,39 @@ const PrivateRoute = ({children}) => {
 
 
     if (
-        (isLoggedIn && session)
-        && children.type.name === "ViewFilesPage"
-        && !keycloak.tokenParsed.resource_access["lynx-web-app"].roles.includes("Manager")
+        isLoggedIn &&
+        session &&
+        children.type.name === "ViewFilesPage" &&
+        !keycloak.tokenParsed.resource_access["lynx-web-app"].roles.includes(
+            "Manager"
+        )
     ) {
         component = null;
     }
 
-    return (isLoggedIn && session) ? component : null;
+    if (
+        isLoggedIn &&
+        session &&
+        children.type.name === "ViewUsersPage" &&
+        !keycloak.tokenParsed.resource_access["lynx-web-app"].roles.includes(
+            "Admin"
+        )
+    ) {
+        component = null;
+    }
+
+    if (
+        isLoggedIn &&
+        session &&
+        children.type.name === "ViewMessagesPage" &&
+        !keycloak.tokenParsed.resource_access["lynx-web-app"].roles.includes(
+            "Worker"
+        )
+    ) {
+        component = null;
+    }
+
+    return isLoggedIn && session ? component : null;
 };
 
 export default PrivateRoute;

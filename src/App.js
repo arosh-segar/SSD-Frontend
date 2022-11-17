@@ -5,7 +5,8 @@ import {ReactKeycloakProvider} from "@react-keycloak/web";
 import PrivateRoute from "./helperFiles/PrivateRoute";
 import ViewMessagesPage from "./pages/view-messages/ViewMessagesPage";
 import ViewFilesPage from "./pages/view-files/ViewFilesPage";
-import {apiInstance} from "./apis/apiInstance"
+import ViewUsersPage from "./pages/view-users/ViewUsersPage";
+import DashboardPage from "./pages/dashboard/DashboardPage";
 
 function App() {
     const eventLogger = (e) => {
@@ -27,14 +28,11 @@ function App() {
                 <BrowserRouter>
                     <Routes>
                         <Route
-                            exact
                             path="/"
                             element={
-                                <Navigate replace to="/messages">
-                                    <PrivateRoute>
-                                        <ViewMessagesPage/>
-                                    </PrivateRoute>
-                                </Navigate>
+                                <PrivateRoute>
+                                    <DashboardPage/>
+                                </PrivateRoute>
                             }
                         />
                         <Route
@@ -53,6 +51,15 @@ function App() {
                                 </PrivateRoute>
                             }
                         />
+                        <Route
+                            path="/users"
+                            element={
+                                <PrivateRoute>
+                                    <ViewUsersPage/>
+                                </PrivateRoute>
+                            }
+                        />
+                        <Route path="*" element={<Navigate to="/" />} />
                     </Routes>
                 </BrowserRouter>
             </ReactKeycloakProvider>

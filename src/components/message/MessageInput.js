@@ -16,7 +16,7 @@ const MessageInput = () => {
             message: message,
             hash:encryptText(message)
         }).then(res => {
-            alert(res.data.msg)
+            setIsSuccessToastVisible(true)
         }).catch(e => {
             alert(e.message)
         })

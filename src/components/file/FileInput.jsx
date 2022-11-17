@@ -1,18 +1,32 @@
 import ToastMessage from "../container/Toast";
 import {useState} from "react";
 import {apiInstance} from "../../apis/apiInstance";
+import {encryptText} from "../../utils/message";
 
 const FileInput = () => {
     const [isSuccessToastVisible, setIsSuccessToastVisible] = useState(false);
     const [selectedFile, setSelectedFile] = useState("");
 
+    let reader = new FileReader();
+
+    const handleFileRead = (event) => {
+        const reader = new FileReader()
+        reader.onload = async (event) => {
+            const text = (event.target.result)
+            setSelectedFile(text.toString())
+            reader.readAsText(event.target.files[0])
+        };
+
+        console.log(reader.result)
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
         apiInstance.post('/file', {
-            file: selectedFile
+            file:encryptText(selectedFile)
         }).then(res => {
-            alert(res.data.message)
+            setIsSuccessToastVisible(true)
         }).catch(e => {
             alert(e.message)
         })
@@ -21,7 +35,7 @@ const FileInput = () => {
         <>
             <div className="absolute top-10">
                 <ToastMessage
-                    msg="Message added successfully"
+                    msg="File added successfully"
                     isVisible={isSuccessToastVisible}
                     setIsVisible={setIsSuccessToastVisible}
                     svg={
@@ -55,7 +69,7 @@ const FileInput = () => {
                                 class="block mb-5 w-full text-sm rounded-lg border cursor-pointer text-gray-400 focus:outline-none bg-gray-700 border-gray-600 placeholder-gray-400"
                                 id="default_size"
                                 type="file"
-                                onChange={(e) => setSelectedFile(e.target.files[0].name)}
+                                onChange={(e)=> handleFileRead(e)}
                             />
                         </div>
                         <div class="flex justify-between items-center py-2 px-3 border-t border-gray-600">
